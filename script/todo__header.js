@@ -37,10 +37,14 @@ function createTask(input) {
 }
 
 export function getTasks() {
-    let tasksArray = Array.from(JSON.parse(localStorage.getItem("tasks")));
-    tasksArray.forEach(task => {
-        createTask(task.task);
-    })
+    if (localStorage.getItem("tasks") !== null) {
+        console.log("test")
+        let tasksArray = Array.from(JSON.parse(localStorage.getItem("tasks")));
+        tasksArray.forEach(task => {
+            createTask(task.task);
+        })
+
+    }
 }
 
 

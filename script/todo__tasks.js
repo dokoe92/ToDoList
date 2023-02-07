@@ -7,9 +7,10 @@ export function editTask() {
         let taskValue = parent.firstChild;
         let editable = false;
         if (!editable) {
-          editable = true;
+
+          
           taskValue.classList.add("todo__task--edit");
-          let currentValue = taskValue.innerText;
+          let currentTask = taskValue.innerText;
           taskValue.contentEditable = "true";
           // prevent line break
           taskValue.addEventListener("keydown", (e) => {
@@ -17,8 +18,13 @@ export function editTask() {
                 e.preventDefault();
             }
           })
+          // Edit in local storage
 
-
+          edit.addEventListener("click", () => {
+            editInLocalStorage(currentTask, taskValue);
+            
+          })
+          
         } else {
           editable = false;
           taskValue.classList.remove("todo__task--edit")
@@ -28,12 +34,18 @@ export function editTask() {
     })
 }
 
-function editInLocalStorage(task) {
-  let tasks = Array.from(JSON.stringify(localStorage.getItem("tasks")));
+
+function editInLocalStorage(currentTask, task) {
+  let tasks = Array.from(JSON.parse(localStorage.getItem("tasks")));
+  let newValue = task.innerText;
   tasks.forEach(task => {
-    
+    if (task.task === currentTask) {
+      task.task = newValue;
+    }
   })
+  localStorage.setItem("tasks", JSON.stringify(tasks))
 }
+
 
 
 
