@@ -1,5 +1,10 @@
-import { addTask } from "./todo__header.js";
+import { addTask, getTasks } from "./todo__header.js";
 import { editTask, deleteTask } from "./todo__tasks.js";
+
+// Create tasks from local storage
+getTasks();
+editTask();
+deleteTask();
 
 // add task to tasks field
 const taskAdd = document.querySelector(".todo__add-task");
@@ -7,3 +12,4 @@ taskAdd.addEventListener("click", addTask);
 // update edit and delete buttons when task is added
 taskAdd.addEventListener("click", editTask);
 taskAdd.addEventListener("click", deleteTask);
+
