@@ -6,4 +6,8 @@
   background-color: yellow;
 }
 
+.todo__actualTask--completed {
+  text-decoration-line: line-through;
+}
+
 /*# sourceMappingURL=style.css.map */

@@ -6,7 +6,7 @@ export function editTask() {
       let editable = false;
       edit.addEventListener("click", (e) => {
         let parent = e.target.parentNode;
-        let taskValue = parent.firstChild;
+        let taskValue = parent.querySelector(".todo__actualTask")
         if (!editable) {
           editable = true;
           taskValue.classList.add("todo__task--edit");
@@ -68,4 +68,28 @@ function deleteLocalStorage(taskToDelete) {
     }
   })
   localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+export function checkForCompletion() {
+  let tasks = Array.from(JSON.parse(localStorage.getItem("tasks")));
+  let check = document.querySelectorAll(".todo__check");
+  check.forEach(radio => {
+    radio.addEventListener("click", (e) => { 
+      let parent = e.target.parentNode;
+      let actualTask = parent.querySelector(".todo__actualTask");
+      tasks.forEach(task => {
+        if (task.task === actualTask.innerText) {
+          if (!task.completed) {
+            actualTask.classList.add("todo__actualTask--completed")
+            task.completed = true;
+          } else {
+            actualTask.classList.remove("todo__actualTask--completed")
+            task.completed = false;
+          }
+        }
+      })
+
+    })
+  })
+  localStorage.setItem("tasks", JSON.stringify(tasks))
 }

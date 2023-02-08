@@ -4,21 +4,25 @@ export function addTask() {
     // Task value
     let input = document.querySelector(".todo__task-input");
     input = input.value;
-
-     // Check if task already exists
-    let taskExists = false;
-    console.log(taskExists)
-    if (localStorage.getItem("tasks")) {
-        taskExists = existTask(input)
-        console.log(taskExists)
-    }
-    // Add to local storage if exists
-    if (!taskExists) {
-        localStorage.setItem("tasks", JSON.stringify([...JSON.parse(localStorage.getItem("tasks") || "[]"), {task: input, completed: false}]));
-        createTask(input); 
+    if (input === "") {
+        alert("INSERT TASK")
     } else {
-        alert("Task already exists!")
+        // Check if task already exists
+        let taskExists = false;
+        console.log(taskExists)
+        if (localStorage.getItem("tasks")) {
+            taskExists = existTask(input)
+        }
+        // Add to local storage if exists
+        if (!taskExists) {
+            localStorage.setItem("tasks", JSON.stringify([...JSON.parse(localStorage.getItem("tasks") || "[]"), {task: input, completed: false}]));
+            createTask(input); 
+        } else {
+            alert("Task already exists!")
+        }
     }
+
+
 }
 
 function existTask(input) {
@@ -34,13 +38,22 @@ function existTask(input) {
 
 
 function createTask(input) {
-    // Actual task
+    // TASK DIV
     let task = document.createElement("div");
+
+    // Actual task
     let taskP = document.createElement("p");
+    taskP.classList.add("todo__actualTask");
     let taskPValue = document.createTextNode(input);
     taskP.appendChild(taskPValue);
     task.appendChild(taskP);
     task.classList.add("todo__task")
+    // Check task for completion
+    let check = document.createElement("span");
+    let checkSymbol = document.createTextNode("\u2713");
+    check.appendChild(checkSymbol)
+    check.classList.add("todo__check");
+    task.appendChild(check)
     // Edit button
     let edit = document.createElement("span");
     let editText = document.createTextNode("Edit");
@@ -68,9 +81,6 @@ export function getTasks() {
 
     }
 }
-
-
-
 
 
 function removeAllChilds() {
