@@ -5,11 +5,33 @@ export function addTask() {
     let input = document.querySelector(".todo__task-input");
     input = input.value;
 
-    createTask(input); 
-
-    // Add to local storage
-    localStorage.setItem("tasks", JSON.stringify([...JSON.parse(localStorage.getItem("tasks") || "[]"), {task: input, completed: false}]))
+     // Check if task already exists
+    let taskExists = false;
+    console.log(taskExists)
+    if (localStorage.getItem("tasks")) {
+        taskExists = existTask(input)
+        console.log(taskExists)
+    }
+    // Add to local storage if exists
+    if (!taskExists) {
+        localStorage.setItem("tasks", JSON.stringify([...JSON.parse(localStorage.getItem("tasks") || "[]"), {task: input, completed: false}]));
+        createTask(input); 
+    } else {
+        alert("Task already exists!")
+    }
 }
+
+function existTask(input) {
+    let tasks = Array.from(JSON.parse(localStorage.getItem("tasks")));
+    let found = false;
+    tasks.forEach(task => {
+        if (task.task === input) {
+            found = true;
+        }
+    })
+    return found
+}
+
 
 function createTask(input) {
     // Actual task
@@ -59,6 +81,5 @@ function removeAllChilds() {
         lastTask = tasks.lastChild;
     }
 }
-
 
 

@@ -53,6 +53,19 @@ export function deleteTask() {
     btn.addEventListener("click", (e) => {
       let target = e.target;
       target.parentNode.parentNode.removeChild(target.parentNode);
+      let taskToDelete = target.parentNode.firstChild.innerText;
+      deleteLocalStorage(taskToDelete);
     })
   })
+}
+
+function deleteLocalStorage(taskToDelete) {
+  let tasks = Array.from(JSON.parse(localStorage.getItem("tasks")));
+  tasks.forEach((task, index) => {
+    if (task.task === taskToDelete) {
+      console.log(task.task)
+      tasks.splice(index,1);
+    }
+  })
+  localStorage.setItem("tasks", JSON.stringify(tasks));
 }
