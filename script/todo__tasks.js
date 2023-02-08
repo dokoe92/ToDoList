@@ -1,14 +1,14 @@
 
 export function editTask() {
     const edit = document.querySelectorAll(".todo__edit");
+
     edit.forEach(edit => {
+      let editable = false;
       edit.addEventListener("click", (e) => {
         let parent = e.target.parentNode;
         let taskValue = parent.firstChild;
-        let editable = false;
         if (!editable) {
-
-          
+          editable = true;
           taskValue.classList.add("todo__task--edit");
           let currentTask = taskValue.innerText;
           taskValue.contentEditable = "true";
@@ -19,19 +19,18 @@ export function editTask() {
             }
           })
           // Edit in local storage
-
           edit.addEventListener("click", () => {
             editInLocalStorage(currentTask, taskValue);
-            
           })
-          
-        } else {
+        } 
+        else {
           editable = false;
           taskValue.classList.remove("todo__task--edit")
           taskValue.contentEditable ="false"
         }
       })
     })
+    
 }
 
 
@@ -45,7 +44,6 @@ function editInLocalStorage(currentTask, task) {
   })
   localStorage.setItem("tasks", JSON.stringify(tasks))
 }
-
 
 
 
