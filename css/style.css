@@ -1,13 +1,128 @@
+.todo__task {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  background-color: #49265e;
+  color: rgba(255, 255, 255, 0.527);
+}
 .todo__task p {
   display: inline;
 }
 
+.todo__actualTask {
+  font-weight: bold;
+}
+
+.todo__check {
+  margin-right: 1rem;
+  color: rgb(115, 172, 115);
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+.todo__check:hover {
+  cursor: pointer;
+}
+
+.todo__edit {
+  font-weight: bold;
+  margin-right: 1rem;
+  color: #AA9739;
+  font-size: 0.8rem;
+}
+.todo__edit:hover {
+  cursor: pointer;
+}
+
+.todo__delete {
+  font-weight: bold;
+  color: red;
+  font-size: 0.8rem;
+}
+.todo__delete:hover {
+  cursor: pointer;
+}
+
 .todo__task--edit {
-  background-color: yellow;
+  background-color: #2E4172;
 }
 
 .todo__actualTask--completed {
   text-decoration-line: line-through;
+}
+
+.todo {
+  margin: 0 auto;
+}
+
+.todo__header h1 {
+  font-size: 3rem;
+  color: #AA9739;
+}
+
+.todo__task-input {
+  width: 25rem;
+  border-radius: 5px;
+  border-style: none;
+  padding: 5px;
+  font-weight: bold;
+}
+.todo__task-input:hover {
+  outline: none;
+}
+.todo__task-input:focus {
+  outline: none;
+}
+
+.todo__add-task {
+  border: 1px solid black;
+  margin: 0 5px;
+  padding: 5px;
+  border-radius: 5px;
+  border-style: none;
+  background-color: rgb(115, 172, 115);
+  box-shadow: 1px 1px;
+  font-weight: bold;
+}
+.todo__add-task:hover {
+  cursor: pointer;
+}
+
+.todo__add-task:active {
+  background-color: rgb(99, 153, 99);
+  box-shadow: 0px 0px;
+}
+
+.todo__tasksField {
+  margin-top: 0.3rem;
+}
+
+.todo__tasksHeader {
+  margin-top: 3rem;
+  margin-bottom: 0px;
+  color: #AA9739;
+}
+
+.todo__wrapper {
+  background-color: #2E4172;
+  width: 35rem;
+  height: 40rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 25px;
+}
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: rgb(169, 169, 175);
 }
 
 /*# sourceMappingURL=style.css.map */

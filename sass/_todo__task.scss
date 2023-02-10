@@ -1,11 +1,60 @@
+@use "./variables";
 
 .todo__task {
     p {
         display: inline;
     }
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    background-color: variables.$third-color;
+    color: rgba(255, 255, 255, 0.527)
+    
+}
+
+.todo__actualTask {
+    font-weight: bold;
+}
+
+
+.todo__check {
+    margin-right: 1rem;
+    color: variables.$success;
+    font-weight: bold;
+    font-size: 0.8rem;
+    &:hover {
+        cursor: pointer;
+    }
+
+}
+
+.todo__edit {
+    font-weight: bold;
+    margin-right: 1rem;
+    color: variables.$second-color;
+    font-size: 0.8rem;
+    &:hover {
+        cursor: pointer;
+    }
+
+}
+
+.todo__delete {
+    font-weight: bold;
+    color: red;
+    font-size: 0.8rem;
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 .todo__task--edit {
-    background-color: yellow;
+    background-color: variables.$base-color;
 }
 
+.todo__actualTask--completed  {
+    text-decoration-line: line-through;
+}

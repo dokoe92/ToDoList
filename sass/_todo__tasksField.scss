@@ -1,0 +1,12 @@
+@use "./variables";
+
+.todo__tasksField {
+    margin-top: 0.3rem;
+}
+
+.todo__tasksHeader {
+    margin-top: 3rem;
+    margin-bottom: 0px;
+    color: variables.$second-color;
+}
+

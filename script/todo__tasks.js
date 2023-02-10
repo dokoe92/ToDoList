@@ -6,7 +6,7 @@ export function editTask() {
       let editable = false;
       edit.addEventListener("click", (e) => {
         let parent = e.target.parentNode;
-        let taskValue = parent.querySelector(".todo__actualTask")
+        let taskValue = parent.parentNode.querySelector(".todo__actualTask")
         if (!editable) {
           editable = true;
           taskValue.classList.add("todo__task--edit");
@@ -51,9 +51,10 @@ export function deleteTask() {
   const deleteButton = document.querySelectorAll(".todo__delete");
   deleteButton.forEach(btn => {
     btn.addEventListener("click", (e) => {
-      let target = e.target;
+      let target = e.target.parentNode;
       target.parentNode.parentNode.removeChild(target.parentNode);
       let taskToDelete = target.parentNode.firstChild.innerText;
+      console.log(taskToDelete)
       deleteLocalStorage(taskToDelete);
     })
   })
@@ -76,7 +77,7 @@ export function checkForCompletion() {
   check.forEach(radio => {
     radio.addEventListener("click", (e) => { 
       let parent = e.target.parentNode;
-      let actualTask = parent.querySelector(".todo__actualTask");
+      let actualTask = parent.parentNode.querySelector(".todo__actualTask");
       tasks.forEach(task => {
         if (task.task === actualTask.innerText) {
           if (!task.completed) {

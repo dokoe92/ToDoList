@@ -40,32 +40,41 @@ function existTask(input) {
 function createTask(input) {
     // TASK DIV
     let task = document.createElement("div");
+    task.classList.add("todo__task")
 
     // Actual task
+    let leftSide = document.createElement("div");
     let taskP = document.createElement("p");
     taskP.classList.add("todo__actualTask");
     let taskPValue = document.createTextNode(input);
     taskP.appendChild(taskPValue);
-    task.appendChild(taskP);
-    task.classList.add("todo__task")
+    leftSide.appendChild(taskP);
+    task.appendChild(leftSide)
+
+    // Right side of task
+    let rightSide = document.createElement("div")
     // Check task for completion
     let check = document.createElement("span");
     let checkSymbol = document.createTextNode("\u2713");
     check.appendChild(checkSymbol)
     check.classList.add("todo__check");
-    task.appendChild(check)
+    rightSide.appendChild(check)
     // Edit button
     let edit = document.createElement("span");
     let editText = document.createTextNode("Edit");
     edit.appendChild(editText);
     edit.classList.add("todo__edit")
-    task.appendChild(edit);
+    rightSide.appendChild(edit);
     // Delete button
     let deleteTask= document.createElement("span");
     let deleteTaskText = document.createTextNode("Delete");
     deleteTask.appendChild(deleteTaskText);
     deleteTask.classList.add("todo__delete");
-    task.appendChild(deleteTask);
+    rightSide.appendChild(deleteTask);
+
+    // Add right side to task
+    task.appendChild(rightSide);
+    
     // Add task to task field
     tasksField.appendChild(task);
     console.log(task)

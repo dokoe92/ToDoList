@@ -1,0 +1,42 @@
+@use "./variables";
+
+.todo__header {
+    h1 {
+        font-size: 3rem;
+        color: variables.$second-color;
+    }
+}
+
+.todo__task-input {
+    width: 25rem;
+    border-radius: 5px;
+    border-style: none;
+    padding: 5px;
+    font-weight: bold;
+    &:hover {
+        outline: none;
+    }
+    &:focus {
+        outline: none;
+    }
+}
+
+.todo__add-task {
+    border: 1px solid black;
+    margin: 0 5px;
+    padding: 5px;
+    border-radius: 5px;
+    border-style: none;
+    background-color: variables.$success;
+    box-shadow: 1px 1px;
+    font-weight: bold;
+    &:hover {
+        cursor: pointer;
+    }
+    
+}
+
+.todo__add-task:active{
+    background-color: rgb(99, 153, 99);
+    box-shadow: 0px 0px;
+}
